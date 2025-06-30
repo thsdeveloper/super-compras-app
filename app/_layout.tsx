@@ -5,6 +5,8 @@ import { StatusBar } from 'expo-status-bar';
 import 'react-native-reanimated';
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { ShoppingProvider } from '@/src/contexts/ShoppingContext';
+import { GameProvider } from '@/src/contexts/GameContext';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -19,11 +21,26 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
+      <GameProvider>
+        <ShoppingProvider>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="scanner" options={{ 
+              title: 'Escanear Produto',
+              presentation: 'modal'
+            }} />
+            <Stack.Screen name="shopping-list" options={{ 
+              title: 'Lista de Compras'
+            }} />
+            <Stack.Screen name="product-details" options={{ 
+              title: 'Detalhes do Produto',
+              presentation: 'modal'
+            }} />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+          <StatusBar style="auto" />
+        </ShoppingProvider>
+      </GameProvider>
     </ThemeProvider>
   );
 }
