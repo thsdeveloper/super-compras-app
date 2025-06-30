@@ -49,6 +49,12 @@
         "projectId": "02a21a73-09a5-4cae-bdd6-808714aff810"
       }
     },
-    "owner": "thsdeveloper"
+    "owner": "thsdeveloper",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/02a21a73-09a5-4cae-bdd6-808714aff810"
+    }
   }
 }
